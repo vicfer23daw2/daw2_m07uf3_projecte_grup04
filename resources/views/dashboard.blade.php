@@ -1,17 +1,16 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('disseny')
+@section('content')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<h2 class="mt-4">Dashboard</h2>
+
+<div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action">Gestió de CLIENTS</a>
+    <a href="#" class="list-group-item list-group-item-action">Gestió d'APARTAMENTS</a>
+    <a href="#" class="list-group-item list-group-item-action">Gestió de LLOGUERS</a>
+    <!-- Opcions per a usuaris 'cap_departament' -->
+    @if(auth()->user()->tipus === 'cap_departament')
+        <a href="{{ url('users') }}" class="list-group-item list-group-item-action">Gestió de TREBALLADORS</a>
+    @endif
+</div>
+
+@endsection
