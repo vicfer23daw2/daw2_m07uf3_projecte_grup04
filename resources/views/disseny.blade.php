@@ -17,12 +17,22 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <form class="form-inline ml-auto" method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button class="btn btn-outline-danger" type="submit">Logout</button>
+                    <div class="d-flex align-items-center">
+                        <span class="navbar-text mr-3">
+                            Hola, {{ Auth::user()->name }}
+                        </span>
+                        <button class="btn btn-outline-danger" type="submit">Logout</button>
+                    </div>
                 </form>
             </div>
         </nav>
     </header>
     <body>
+        @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
         <div class="container-fluid" >
         @yield('content')
         </div>

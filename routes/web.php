@@ -15,6 +15,10 @@ Route::group(['middleware' => 'auth'], function(){
         return view('dashboard');
     })->name('dashboard');
 
+    Route::group(['middleware' => 'capDepAuth'], function(){
+        Route::resource('users', UserController::class); // forma conveniente de definir rutas CRUD automáticamente para todos los métodos del controlador
+    });
+
     Route::resource('clients', ClientController::class);
     Route::resource('apartaments', ApartamentController::class);
     Route::resource('lloguers', LloguerController::class);
@@ -23,10 +27,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::patch('lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'update'])->name('lloguers.update');
     Route::delete('/lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'destroy'])->name('lloguers.destroy');
      
-    Route::resource('users', UserController::class); // forma conveniente de definir rutas CRUD automáticamente para todos los métodos del controlador
-
-
-    
 });
 
 Route::middleware('auth')->group(function () {
