@@ -5,18 +5,11 @@
   <table class="table">
     <thead>
         <tr class="table-primary">
-          <td>DNI</td>
+          <td>DNI Client</td>
           <td>Codi Apartament</td> 
           <td>Data d'inici</td> 
-          <td>Hora d'inici</td>
           <td>Data de finalització</td> 
-          <td>Hora de finalització</td> 
-          <td>Lloc de lliurament de claus</td>
-          <td>Lloc de devolució de claus</td>
-          <td>Preu per dia</td>
-          <td>Dipòsit</td>
-          <td>Quantitat del dipòsit</td>
-          <td>Assegurança</td>          
+          <td>Dipòsit</td>        
           <td>Accions sobre la taula</td>   
         </tr>
     </thead>
@@ -26,25 +19,8 @@
             <td>{{ $lloguer->dni_client }}</td>
             <td>{{ $lloguer->codi_apartament }}</td>  
             <td>{{ $lloguer->data_inici }}</td>
-            <td>{{ $lloguer->hora_inici }}</td>
-            <td>{{ $lloguer->data_finalitzacio }}</td>
-            <td>{{ $lloguer->hora_finalitzacio }}</td> 
-            <td>{{ $lloguer->lliurament_claus }}</td>
-            <td>{{ $lloguer->devolucio_claus }}</td>  
-            <td>{{ $lloguer->preu_dia }}</td>
-            <td>{{ $lloguer->diposit ? 'Sí' : 'No' }}</td>
-            <td>{{ $lloguer->quantitat_diposit }}</td>
-            <td>
-                @if($lloguer->asseguransa == 'franquicia_fins_1000_euros')
-                    Franquícia fins a 1000€
-                @elseif($lloguer->asseguransa == 'franquicia_fins_500_euros')
-                    Franquícia fins a 500€
-                @elseif($lloguer->asseguransa == 'sense_franquicia')
-                    Sense Franquícia
-                @else
-                    {{ $lloguer->asseguransa }}
-                @endif
-            </td>                   
+            <td>{{ $lloguer->data_finalitzacio }}</td> 
+            <td>{{ $lloguer->diposit ? 'Sí' : 'No' }}</td>                  
             <td class="text-left">
                 <a href="{{ route('lloguers.edit', [$lloguer->dni_client, $lloguer->codi_apartament]) }}" class="btn btn-primary btn-sm">Edita</a>
                 <form action="{{ route('lloguers.destroy', [$lloguer->dni_client, $lloguer->codi_apartament]) }}" method="post" style="display: inline-block">

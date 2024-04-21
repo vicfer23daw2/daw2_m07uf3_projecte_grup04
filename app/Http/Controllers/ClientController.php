@@ -50,9 +50,10 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show($dni_client)
     {
-        //
+        $dades_client = Client::findOrFail($dni_client);
+        return view('clients-mostra',compact('dades_client'));
     }
 
     /**

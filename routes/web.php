@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('apartaments', ApartamentController::class);
     Route::resource('lloguers', LloguerController::class);
     Route::get('lloguers/{dni_client}/{codi_apartament}/edit', [LloguerController::class, 'edit'])->name('lloguers.edit');
+    Route::get('lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'show'])->name('lloguers.show');
     Route::patch('lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'update'])->name('lloguers.update');
     Route::delete('/lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'destroy'])->name('lloguers.destroy');
      

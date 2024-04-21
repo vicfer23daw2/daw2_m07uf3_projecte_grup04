@@ -68,9 +68,13 @@ class LloguerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Lloguer $lloguer)
+    public function show($dni_client, $codi_apartament)
     {
-        //
+        $dades_lloguer = DB::table('lloguers')
+            ->where('dni_client', $dni_client)
+            ->where('codi_apartament', $codi_apartament)
+            ->first();
+        return view('lloguers-mostra',compact('dades_lloguer'));
     }
 
     /**

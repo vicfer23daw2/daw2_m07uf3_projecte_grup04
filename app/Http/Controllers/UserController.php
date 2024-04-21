@@ -46,9 +46,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $dades_user = User::findOrFail($id);
+        return view('users-mostra',compact('dades_user'));
     }
 
     /**
