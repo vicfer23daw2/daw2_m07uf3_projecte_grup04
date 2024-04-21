@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('cognoms')->after('name');
             $table->enum('tipus', ['treballador', 'cap_departament'])->default('cap_departament')->after('password');
-            $table->time('hora_entrada')->nullable();
-            $table->time('hora_sortida')->nullable();
+            $table->time('hora_entrada');
+            $table->time('hora_sortida');
         });
     }
 

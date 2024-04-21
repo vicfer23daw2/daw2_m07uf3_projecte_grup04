@@ -24,7 +24,7 @@ class Apartament extends Model
         'aire_condicionat',
     ];
     protected $table = 'apartaments';
-    protected $incrementing = false;
+    public $incrementing = false;
     protected $primaryKey = 'codi_apartament';
 
     public function lloguers()

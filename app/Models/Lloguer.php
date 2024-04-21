@@ -24,7 +24,7 @@ class Lloguer extends Model
         'asseguransa',
     ];
     protected $table = 'lloguers';
-    protected $incrementing = false;
+    public $incrementing = false;
     protected $primaryKey = ['dni_client', 'codi_apartament'];
 
     public function client()

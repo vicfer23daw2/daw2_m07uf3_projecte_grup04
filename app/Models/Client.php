@@ -23,7 +23,7 @@ class Client extends Model
         'num_targeta',
     ];
     protected $table = 'clients';
-    protected $incrementing = false;
+    public $incrementing = false;
     protected $primaryKey = 'dni_client';
 
     public function lloguers()

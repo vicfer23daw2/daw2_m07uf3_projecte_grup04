@@ -36,9 +36,9 @@
         <div class="form-group">           
             <label for="tipus">Tipus de treballador</label>
             <select name="tipus">
-			    <option value="treballador">Treballador</option>
-			    <option value="cap_departament">Cap de departament</option>			    
-			</select>
+              <option value="treballador">Treballador</option>
+              <option value="cap_departament">Cap de departament</option>			    
+            </select>
         </div>
         <div class="form-group">           
             <label for="hora_entrada">Hora d'entrada</label>

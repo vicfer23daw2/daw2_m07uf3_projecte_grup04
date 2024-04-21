@@ -15,22 +15,14 @@ Route::group(['middleware' => 'auth'], function(){
         return view('dashboard');
     })->name('dashboard');
 
-    Route::group(['middleware' => 'capDepartamentMiddleware'], function(){ // falta definir
-        
-    });
-
+    Route::resource('clients', ClientController::class);
+    Route::resource('apartaments', ApartamentController::class);
+    Route::resource('lloguers', LloguerController::class);
+    Route::get('lloguers/{dni_client}/{codi_apartament}/edit', [LloguerController::class, 'edit'])->name('lloguers.edit');
+    Route::patch('lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'update'])->name('lloguers.update');
+    Route::delete('/lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'destroy'])->name('lloguers.destroy');
      
     Route::resource('users', UserController::class); // forma conveniente de definir rutas CRUD automáticamente para todos los métodos del controlador
-    /*
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('/users', [UserController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-    */
-
 
 
     
