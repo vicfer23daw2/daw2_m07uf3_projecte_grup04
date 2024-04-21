@@ -8,6 +8,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class LloguerController extends Controller
 {
@@ -142,6 +143,23 @@ class LloguerController extends Controller
 
         $dades_lloguers = Lloguer::all();
         return view('lloguers-index', compact('dades_lloguers'));
+    }
+
+    /**
+     * Genera un PDF
+     */
+    public function pdf($dni_client, $codi_apartament)
+    {
+        $dades_lloguer = DB::table('lloguers')
+            ->where('dni_client', $dni_client)
+            ->where('codi_apartament', $codi_apartament)
+            ->first();
+
+        // Generar el PDF
+        $pdf = PDF::loadView('lloguers-mostra', compact('dades_lloguer'));
+
+        // Descargar el PDF
+        return $pdf->download('lloguer.pdf');
     }
    
 }

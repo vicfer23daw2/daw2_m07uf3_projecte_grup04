@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use PDF;
 
 class ClientController extends Controller
 {
@@ -96,5 +97,19 @@ class ClientController extends Controller
         $client = Client::findOrFail($dni_client)->delete();
         $dades_clients = Client::all();
         return view('clients-index', compact('dades_clients'));
+    }
+
+    /**
+     * Genera un PDF
+     */
+    public function pdf($dni_client)
+    {
+        $dades_client = Client::findOrFail($dni_client);
+
+        // Generar el PDF
+        $pdf = PDF::loadView('clients-mostra', compact('dades_client'));
+
+        // Descargar el PDF
+        return $pdf->download('client.pdf');
     }
 }

@@ -30,7 +30,8 @@
                 Esborra
               </button>
             </form>
-            <a href="{{ route('apartaments.show', $apartament->codi_apartament)}}" class="btn btn-info btn-sm">Mostra</a>  
+            <a href="{{ route('apartaments.show', $apartament->codi_apartament)}}" class="btn btn-info btn-sm">Mostra</a>
+            <a href="{{ route('apartaments.pdf', $apartament->codi_apartament) }}" class="btn btn-success btn-sm">PDF</a>  
           </td>            
         </tr>
         @endforeach

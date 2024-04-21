@@ -29,6 +29,7 @@
               </button>
             </form>
             <a href="{{ route('clients.show', $client->dni_client)}}" class="btn btn-info btn-sm">Mostra</a>  
+            <a href="{{ route('clients.pdf', $client->dni_client) }}" class="btn btn-success btn-sm">PDF</a>
           </td>            
         </tr>
         @endforeach

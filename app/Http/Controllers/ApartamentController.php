@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Apartament;
 use Illuminate\Http\Request;
+use PDF;
 
 class ApartamentController extends Controller
 {
@@ -99,5 +100,19 @@ class ApartamentController extends Controller
         $apartament = Apartament::findOrFail($codi_apartament)->delete();
         $dades_apartaments = Apartament::all();
         return view('apartaments-index', compact('dades_apartaments'));
+    }
+
+    /**
+     * Genera un PDF
+     */
+    public function pdf($codi_apartament)
+    {
+        $dades_apartament = Apartament::findOrFail($codi_apartament);
+
+        // Generar el PDF
+        $pdf = PDF::loadView('apartaments-mostra', compact('dades_apartament'));
+
+        // Descargar el PDF
+        return $pdf->download('apartament.pdf');
     }
 }

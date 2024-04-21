@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use PDF;
 
 class UserController extends Controller
 {
@@ -88,6 +89,20 @@ class UserController extends Controller
         $user = User::findOrFail($id)->delete();
         $dades_users = User::all();
         return view('users-index', compact('dades_users'));
+    }
+
+    /**
+     * Genera un PDF
+     */
+    public function pdf($id)
+    {
+        $dades_user = User::findOrFail($id);
+
+        // Generar el PDF
+        $pdf = PDF::loadView('users-mostra', compact('dades_user'));
+
+        // Descargar el PDF
+        return $pdf->download('user.pdf');
     }
 
 }

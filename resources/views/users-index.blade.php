@@ -33,6 +33,7 @@
               </button>
             </form>
             <a href="{{ route('users.show', $user->id)}}" class="btn btn-info btn-sm">Mostra</a>  
+            <a href="{{ route('users.pdf', $user->id) }}" class="btn btn-success btn-sm">PDF</a>
           </td>            
         </tr>
         @endforeach

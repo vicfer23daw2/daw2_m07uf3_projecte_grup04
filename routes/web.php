@@ -16,12 +16,18 @@ Route::group(['middleware' => 'auth'], function(){
     })->name('dashboard');
 
     Route::group(['middleware' => 'capDepAuth'], function(){
-        Route::resource('users', UserController::class); // forma conveniente de definir rutas CRUD automáticamente para todos los métodos del controlador
+        Route::resource('users', UserController::class);  // forma conveniente de definir rutas CRUD automáticamente para todos los métodos basicos del controlador
+        Route::get('users/{user}/pdf', [UserController::class, 'pdf'])->name('users.pdf');
     });
 
     Route::resource('clients', ClientController::class);
+    Route::get('clients/{client}/pdf', [ClientController::class, 'pdf'])->name('clients.pdf');
+
     Route::resource('apartaments', ApartamentController::class);
+    Route::get('apartaments/{apartament}/pdf', [ApartamentController::class, 'pdf'])->name('apartaments.pdf');
+
     Route::resource('lloguers', LloguerController::class);
+    Route::get('lloguers/{dni_client}/{codi_apartament}/pdf', [LloguerController::class, 'pdf'])->name('lloguers.pdf');
     Route::get('lloguers/{dni_client}/{codi_apartament}/edit', [LloguerController::class, 'edit'])->name('lloguers.edit');
     Route::get('lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'show'])->name('lloguers.show');
     Route::patch('lloguers/{dni_client}/{codi_apartament}', [LloguerController::class, 'update'])->name('lloguers.update');

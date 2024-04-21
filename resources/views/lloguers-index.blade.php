@@ -28,7 +28,8 @@
                     @method('DELETE')
                     <button class="btn btn-danger btn-sm" type="submit">Esborra</button>
                 </form>
-                <a href="{{ route('lloguers.show', [$lloguer->dni_client, $lloguer->codi_apartament]) }}" class="btn btn-info btn-sm">Mostra</a>  
+                <a href="{{ route('lloguers.show', [$lloguer->dni_client, $lloguer->codi_apartament]) }}" class="btn btn-info btn-sm">Mostra</a> 
+                <a href="{{ route('lloguers.pdf', [$lloguer->dni_client, $lloguer->codi_apartament]) }}" class="btn btn-success btn-sm">PDF</a> 
             </td>            
         </tr>
         @endforeach
