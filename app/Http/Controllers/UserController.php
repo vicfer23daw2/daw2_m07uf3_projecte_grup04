@@ -34,7 +34,7 @@ class UserController extends Controller
             'name' => 'required',
             'cognoms' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/'],
             'tipus' => 'required',
             'hora_entrada' => 'required',
             'hora_sortida' => 'required'
@@ -71,7 +71,7 @@ class UserController extends Controller
             'name' => 'required',
             'cognoms' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'password' => ['required', 'string', 'min:8', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+$/'],
             'tipus' => 'required',
             'hora_entrada' => 'required',
             'hora_sortida' => 'required'
