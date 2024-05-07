@@ -20,6 +20,8 @@ class UserPredeterminadoSeeder extends Seeder
             'email' => 'predeterminado@touristrent.com',
             'password' => Hash::make('password'),
             'tipus' => 'cap_departament',
+            'hora_entrada' => '09:00:00',
+            'hora_sortida' => '10:00:00',
         ]);
     }
 }
